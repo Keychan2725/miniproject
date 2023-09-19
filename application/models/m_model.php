@@ -30,8 +30,9 @@ class M_model extends CI_Model
         $data = $this->db->update($tabel, $data, $where);
         return $this->db->affected_rows();
     }
-    public function register($data)
-    {
-        $this->db->insert('users', $data);
-    }
+    // public function register($data, $table)
+    // {
+    //     $this->db->insert($table, $data);
+    //     return $this->db->insert_id();
+    // }
 }

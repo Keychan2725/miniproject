@@ -181,8 +181,20 @@ body {
 
                 <div class="row ">
                     <div class="col-12 card p-2">
+
                         <div class="card-body min-vh-100  align-items-center">
                             <div class="card w-100 m-auto p-5">
+                                <div class=" d-flex ">
+                                    <p class="class fs-4">Data Guru</p>
+                                    <form class="d-flex " action="" style="padding-left: 1100px;" role="search">
+                                        <input class="form-control me-1 " type="search" placeholder="Cari Guru"
+                                            aria-label="Search">
+                                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                                    </form>
+
+                                </div>
+                                <br>
+                                <br>
                                 <table class="table  table-striped">
                                     <thead>
                                         <tr>
@@ -209,7 +221,7 @@ body {
                                                 <?php echo $row->gender ?>
                                             </td>
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                <?php echo $row->id_mapel ?>
+                                                <?php echo tampil_full_mapel($row->id_mapel) ?>
                                             </td>
 
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700">

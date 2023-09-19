@@ -11,7 +11,7 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
-<body class="bg-success">
+<body class="bg-secondary">
     <section class="h-100 ">
         <div class="container h-100">
             <div class="row justify-content-sm-center h-100">
@@ -29,7 +29,8 @@
 
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" name="email" value="" required>
+                                    <input id="email" type="email" class="form-control" name="email" value="<?php echo set_value('email'); ?>
+                                    " required autofocus>
                                     <div class="invalid-feedback">
                                         Email is invalid
                                     </div>

@@ -32,7 +32,7 @@
     <body>
         <?php $this->load->view('component/sidebar') ?>
         <div class="card w-50 m-auto p-3">
-            <h3 class="text-center">Update Data </h3>
+            <h3 class="text-center">Update Data Guru</h3>
             <?php foreach ($guru as $data_guru) : ?>
             <form method="post" action="<?php echo base_url('Project/aksi_update_guru') ?>"
                 enctype="multipart/form_data">
@@ -57,14 +57,15 @@
                             <option value="Wanita">Wanita</option>
                         </select>
                     </div>
+
                     <div class="mb-3 col-6">
-                        <label for="mapel" class="form-label">Kelas</label>
+                        <label for="mapel" class="form-label">Mapel</label>
                         <select name="id_mapel" class="form-select">
                             <option selected value="<?php echo $data_guru->id_mapel ?>">
-                                <?php echo tampil_full_kelas_byid($data_guru->id_mapel) ?></option>
+                                <?php echo tampil_full_mapel($data_guru->id_mapel) ?></option>
                             <?php foreach ($mapel as $row) : ?>
-                            <option value="<?php echo $row->id ?>">
-                                <?php echo $row->nama_mappel ?>
+                            <option value="<?php echo $$row->nama_mapel ?>">
+                                <?php echo tampil_full_mapel($row->nama_mapel) ?>
                             </option>
                             <?php endforeach ?>
                         </select>

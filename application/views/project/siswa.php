@@ -182,6 +182,17 @@ body {
                     <div class="col-12 card p-2">
                         <div class="card-body min-vh-100  align-items-center">
                             <div class="card w-100 m-auto p-5">
+                                <div class=" d-flex ">
+                                    <p class="class fs-4">Data Siswa</p>
+                                    <form class="d-flex " style="padding-left: 1100px;" role="search">
+                                        <input class="form-control me-1 " type="search" placeholder="Cari Siswa"
+                                            aria-label="Search">
+                                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                                    </form>
+
+                                </div>
+                                <br>
+                                <br>
                                 <table class="table  table-striped">
                                     <thead>
                                         <tr>

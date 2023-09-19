@@ -179,7 +179,7 @@ body {
             <div class="container-fluid ">
 
                 <div class="d-flex  p-5 ">
-                    <div class="card bg-primary text-white" style="width: 30rem;">
+                    <div class="card bg-secondary text-white" style="width: 30rem;">
 
                         <div class="card-body">
                             <p class="card-text fs-4">Jumlah Siswa</p>
@@ -188,7 +188,7 @@ body {
                                 Lengkap</a>
                         </div>
                     </div>
-                    <div class="card bg-primary text-white" style="width: 30rem;">
+                    <div class="card bg-secondary text-white" style="width: 30rem;">
 
                         <div class="card-body">
                             <p class="card-text fs-4">Jumlah Guru</p>

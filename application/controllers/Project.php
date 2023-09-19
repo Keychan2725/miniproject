@@ -9,6 +9,7 @@ class Project extends CI_Controller
 		parent::__construct();
 		$this->load->model('m_model');
 		$this->load->helper('my_helper');
+		$this->load->library('form_validation');
 	}
 
 
@@ -18,8 +19,10 @@ class Project extends CI_Controller
 
 
 		$data['guru'] = $this->m_model->get_data('guru')->result();
+		$data['mapel'] = $this->m_model->get_data('mapel')->result();
 		$this->load->view('project/tambah_guru', $data);
 	}
+
 	public function tambah_siswa()
 	{
 
@@ -67,15 +70,21 @@ class Project extends CI_Controller
 		$data = [
 			'username' => $this->input->post('username'),
 			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password'),
+			'password' => md5($this->input->post('password')),
+
+
 		];
-		$insert = $this->m_model->register($data);
-		if ($insert) {
-			echo base_url('project/login');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+
+		if ($this->form_validation->run() === TRUE) {
+			$this->m_model->tambah_data('admin', $data);
+			redirect(base_url('project/login'));
 		} else {
-			echo 'EROORORORO';
+
+			redirect(base_url(('project/registrasi')));
 		}
 	}
+
 	public function aksi_login()
 	{
 		$email = $this->input->post('email', true);
@@ -95,6 +104,7 @@ class Project extends CI_Controller
 			$this->session->set_userdata($data);
 			redirect(base_url('project/dashboard'));
 		} else {
+			$this->session->set_flashdata("alert('Data diri anda salah')");
 			redirect(base_url('project/login'));
 		}
 	}
@@ -130,6 +140,7 @@ class Project extends CI_Controller
 	public function update_guru($id)
 	{
 		$data['guru'] = $this->m_model->get_by_id('guru', 'id_guru', $id)->result();
+		$data['mapel'] = $this->m_model->get_by_id('mapel', 'nama_mapel', $id)->result();
 
 		$this->load->view('project/update_guru', $data);
 	}
@@ -175,7 +186,7 @@ class Project extends CI_Controller
 		$eksekusi = $this->m_model->ubah_data(
 			'siswa',
 			$data,
-			array('siswa' => $this->input->post('id_siswa'))
+			array('id_siswa' => $this->input->post('id_siswa'))
 		);
 		if ($eksekusi) {
 			$this->session->set_flashdata('sukses', 'berhasil');

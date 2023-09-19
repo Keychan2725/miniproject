@@ -11,7 +11,7 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
-<body class="bg-success">
+<body class="bg-secondary">
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-sm-center h-100">
@@ -23,11 +23,12 @@
                     <div class="card shadow-lg">
                         <div class="card-body p-5">
                             <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
-                            <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+                            <form method="POST" action="<?php echo base_url('project/aksi_registrasi')  ?>"
+                                class="needs-validation" novalidate="" autocomplete="off">
                                 <div class="mb-3">
                                     <label class="mb-2 text-muted" for="name">Username</label>
                                     <input id="username" type="text" class="form-control" name="username" value=""
-                                        required autofocus>
+                                        required>
                                     <div class="invalid-feedback">
                                         Name is required
                                     </div>

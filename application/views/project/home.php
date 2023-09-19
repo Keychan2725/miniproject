@@ -30,7 +30,7 @@
 }
 </style>
 
-<body class="bg-success ">
+<body class="bg-secondary ">
     <div class="background-image-black  align-item-center">
 
 
@@ -49,7 +49,7 @@
             <h3>Ini merupakan Website resmi sekolah yang berisikan data data sekolah</h3>
             <br>
             <br>
-            <a href="<?php echo base_url('project/login') ?>" class="btn btn-sm btn-success ">
+            <a href="<?php echo base_url('project/login') ?>" class="btn btn-sm btn-secondary fs-5">
                 Login
             </a>
         </div>

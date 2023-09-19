@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark p-3 bg-success bg-gradient " id="headerNav">
+    <nav class="navbar navbar-expand-lg navbar-dark p-3 bg-secondary " id="headerNav">
         <div class="container-fluid">
             <!-- <a class="navbar-brand d-block d-lg-none" href="#">
                 <img src="/static_files/images/logos/logo_2_white.png" height="80" />
