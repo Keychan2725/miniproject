@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php echo $title; ?></title>
 </head>
 
 <body>
@@ -33,6 +33,7 @@
         <?php $this->load->view('component/sidebar') ?>
         <div class="card w-50 m-auto p-3">
             <h3 class="text-center">Update Data Guru</h3>
+            <?php echo $this->session->flashdata('message'); ?>
             <?php foreach ($guru as $data_guru) : ?>
             <form method="post" action="<?php echo base_url('Project/aksi_update_guru') ?>"
                 enctype="multipart/form_data">

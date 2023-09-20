@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web</title>
+    <title><?php echo $title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -157,6 +157,9 @@ body {
                     <a href="<?php echo base_url('project/guru') ?>" class="fs-5">Data Guru</a>
                 </li>
                 <li>
+                    <a href="#" class="fs-5">Data Kelas</a>
+                </li>
+                <li>
                     <a href="#" class="fs-5">About</a>
                 </li>
                 <li>
@@ -184,6 +187,8 @@ body {
 
                         <div class="card-body min-vh-100  align-items-center">
                             <div class="card w-100 m-auto p-5">
+                                <?php echo $this->session->flashdata('message'); ?>
+
                                 <div class=" d-flex ">
                                     <p class="class fs-4">Data Guru</p>
                                     <form class="d-flex " action="" style="padding-left: 1100px;" role="search">
@@ -193,6 +198,7 @@ body {
                                     </form>
 
                                 </div>
+
                                 <br>
                                 <br>
                                 <table class="table  table-striped">
@@ -228,7 +234,7 @@ body {
                                                 <a href="<?php echo base_url('project/update_guru/') . $row->id_guru ?>"
                                                     class="btn btn-sm btn-primary">Ubah</a>
 
-                                                <button onclick="hapus(<?php echo $row->id_guru ?>)"
+                                                <button onclick="hapus(<?php echo $row->id_guru ?> )"
                                                     class="btn btn-sm btn-danger">Hapus</button>
                                             </td>
 
@@ -263,7 +269,7 @@ body {
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
+    <script src="js/sweetalert2.all.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>

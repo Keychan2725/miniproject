@@ -6,7 +6,7 @@
     <meta name="author" content="Muhamad Nauval Azhar">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="This is a login page template based on Bootstrap 5">
-    <title>Bootstrap 5 Login Page</title>
+    <title><?php echo $title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
@@ -22,6 +22,7 @@
                     </div>
                     <div class="card shadow-lg">
                         <div class="card-body p-5">
+                            <?php echo $this->session->flashdata('message'); ?>
                             <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
                             <form method="POST" action="<?php echo base_url('project/aksi_registrasi')  ?>"
                                 class="needs-validation" novalidate="" autocomplete="off">

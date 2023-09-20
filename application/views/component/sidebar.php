@@ -157,6 +157,9 @@ body {
                     <a href="<?php echo base_url('project/guru') ?>" class="fs-5">Data Guru</a>
                 </li>
                 <li>
+                    <a href="#" class="fs-5">Data Kelas</a>
+                </li>
+                <li>
                     <a href="#" class="fs-5">About</a>
                 </li>
                 <li>
@@ -176,6 +179,7 @@ body {
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+                <?php echo $this->session->set_flashdata('message'); ?>
 
             </div>
         </div>

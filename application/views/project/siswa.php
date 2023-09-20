@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web</title>
+    <title><?php echo $title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -157,6 +157,9 @@ body {
                     <a href="<?php echo base_url('project/guru') ?>" class="fs-5">Data Guru</a>
                 </li>
                 <li>
+                    <a href="#" class="fs-5">Data Kelas</a>
+                </li>
+                <li>
                     <a href="#" class="fs-5">About</a>
                 </li>
                 <li>
@@ -182,8 +185,10 @@ body {
                     <div class="col-12 card p-2">
                         <div class="card-body min-vh-100  align-items-center">
                             <div class="card w-100 m-auto p-5">
+                                <?php echo $this->session->set_flashdata('message'); ?>
+
                                 <div class=" d-flex ">
-                                    <p class="class fs-4">Data Siswa</p>
+                                    <p class="class fs-4"><?php echo $title; ?></p>
                                     <form class="d-flex " style="padding-left: 1100px;" role="search">
                                         <input class="form-control me-1 " type="search" placeholder="Cari Siswa"
                                             aria-label="Search">
@@ -191,6 +196,8 @@ body {
                                     </form>
 
                                 </div>
+
+
                                 <br>
                                 <br>
                                 <table class="table  table-striped">
@@ -233,6 +240,7 @@ body {
 
                                     </tbody>
                                 </table>
+
                                 <a href="<?php echo base_url('project/tambah_siswa') ?>"
                                     class="inline-block rounded bg-sky-600 px-4 py-2 text-xs font-medium text-white hover:bg-sky-700 text-center btn btn-primary">Tambah</a>
                             </div>

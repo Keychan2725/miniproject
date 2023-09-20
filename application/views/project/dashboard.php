@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web</title>
+    <title><?php echo $title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -157,6 +157,9 @@ body {
                     <a href="<?php echo base_url('project/guru') ?>" class="fs-5">Data Guru</a>
                 </li>
                 <li>
+                    <a href="#" class="fs-5">Data Kelas</a>
+                </li>
+                <li>
                     <a href="#" class="fs-5">About</a>
                 </li>
                 <li>
@@ -196,35 +199,31 @@ body {
                             <a href="<?php echo base_url('project/guru') ?>" class=" fs-5 btn btn-sm text-white">Data
                                 Lengkap</a>
                         </div>
-                        <!-- <div class="card bg-primary text-white" style="width: 30rem;">
+
+
+                    </div>
+                    <div class="card bg-secondary text-white" style="width: 30rem;">
 
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <p class="card-text fs-4">Jumlah Kelas</p>
+                            <php class="card-text fs-1"><?php echo $kelas ?></p>
+                                <a href="<?php echo base_url('project/kelas') ?>"
+                                    class=" fs-5 btn btn-sm text-white">Data
+                                    Lengkap</a>
                         </div>
                     </div>
-                    <div class="card bg-primary text-white" style="width: 30rem;">
+                    <!-- /#page-content-wrapper -->
 
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div> -->
-                    </div>
                 </div>
-            </div>
-            <!-- /#page-content-wrapper -->
+                <!-- /#wrapper -->
 
-        </div>
-        <!-- /#wrapper -->
-
-        <!-- Menu Toggle Script -->
-        <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-        </script>
+                <!-- Menu Toggle Script -->
+                <script>
+                $("#menu-toggle").click(function(e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                });
+                </script>
 </body>
 
 </html>

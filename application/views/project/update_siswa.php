@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar</title>
+    <title><?php echo $title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -45,6 +45,8 @@
         <?php $this->load->view('component/sidebar') ?>
         <div class="card w-50 m-auto p-3">
             <h3 class="text-center">Update Siswa </h3>
+            <?php echo $this->session->flashdata('message'); ?>
+
             <?php foreach ($siswa as $data_siswa) : ?>
             <form method="post" action="<?php echo base_url('project/aksi_update_siswa') ?>"
                 enctype="multipart/form_data">
