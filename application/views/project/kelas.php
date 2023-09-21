@@ -158,7 +158,7 @@ body {
                     <a href="<?php echo base_url('project/guru') ?>" class="fs-5">Data Guru</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('project/kelas')  ?>" class="fs-5">Data Kelas</a>
+                    <a href="#" class="fs-5">Data Kelas</a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">About</a>
@@ -169,6 +169,7 @@ body {
                 <li>
                     <a href="#" class="fs-5">Settings</a>
                 </li>
+
                 <li>
                     <a href="<?php echo base_url('project/home') ?>" class="fs-5">Log Out</a>
                 </li>
@@ -184,20 +185,20 @@ body {
 
                 <div class="row ">
                     <div class="col-12 card p-2">
+
                         <div class="card-body min-vh-100  align-items-center">
                             <div class="card w-100 m-auto p-5">
-                                <?php echo $this->session->set_flashdata('message'); ?>
+                                <?php echo $this->session->flashdata('message'); ?>
 
                                 <div class=" d-flex ">
-                                    <p class="class fs-4"><?php echo $title; ?></p>
-                                    <form class="d-flex " style="padding-left: 1100px;" role="search">
-                                        <input class="form-control me-1 " type="search" placeholder="Cari Siswa"
+                                    <p class="class fs-4">Data Kelas</p>
+                                    <form class="d-flex " action="" style="padding-left: 1100px;" role="search">
+                                        <input class="form-control me-1 " type="search" placeholder="Cari Kelas"
                                             aria-label="Search">
                                         <button class="btn btn-outline-secondary" type="submit">Cari</button>
                                     </form>
 
                                 </div>
-
 
                                 <br>
                                 <br>
@@ -205,35 +206,34 @@ body {
                                     <thead>
                                         <tr>
                                             <th scope="col">No </th>
-                                            <th scope="col">Nama </th>
-                                            <th scope="col">NISN </th>
-                                            <th scope="col"> Gender </th>
-                                            <th scope="col"> Kelas </th>
+                                            <th scope="col">Jurusan </th>
+                                            <th scope="col">Tingkat </th>
+                                            <th scope="col">Id Sekolah </th>
+
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 0;
-                                        foreach ($siswa as $row) : $no++
+                                        foreach ($kelas as $row) : $no++
                                         ?>
                                         <tr>
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $no ?></td>
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                <?php echo $row->nama_siswa ?></td>
+                                                <?php echo $row->jurusan ?></td>
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                <?php echo $row->nisn ?></td>
+                                                <?php echo $row->tingkat ?></td>
+
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                <?php echo $row->gender ?>
+                                                <?php echo $row->id_sekolah ?>
                                             </td>
+
                                             <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                <?php echo tampil_full_kelas_byid($row->id_kelas) ?>
-                                            </td>
-                                            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                <a href="<?php echo base_url('project/update_siswa/') . $row->id_siswa ?>"
+                                                <a href="<?php echo base_url('project/update_kelas/') . $row->id ?>"
                                                     class="btn btn-sm btn-primary">Ubah</a>
 
-                                                <button onclick="hapus(<?php echo $row->id_siswa ?>)"
+                                                <button onclick="hapus(<?php echo $row->id ?> )"
                                                     class="btn btn-sm btn-danger">Hapus</button>
                                             </td>
 
@@ -241,12 +241,38 @@ body {
 
                                     </tbody>
                                 </table>
-
-                                <a href="<?php echo base_url('project/tambah_siswa') ?>"
+                                <a href="<?php echo base_url('project/tambah_kelas') ?>"
                                     class="inline-block rounded bg-sky-600 px-4 py-2 text-xs font-medium text-white hover:bg-sky-700 text-center btn btn-primary">Tambah</a>
                             </div>
                             </form>
 
+                            <script>
+                            function hapus(id) {
+                                swal.fire({
+                                    title: 'Yakin untuk menghapus data ini?',
+                                    text: "Data ini akan terhapus permanen",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    cancelButtonText: 'Batal',
+                                    confirmButtonText: 'Ya Hapus'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Berhasil Dihapus',
+                                            showConfirmButton: false,
+                                            timer: 1500,
+
+                                        }).then(function() {
+                                            window.location.href =
+                                                "<?php echo base_url('Project/hapus_kelas/')?>" + id;
+                                        });
+                                    }
+                                });
+                            }
+                            </script>
 
 
                         </div>
@@ -261,34 +287,14 @@ body {
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
+    <script src="js/sweetalert2.all.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
-    function hapus(id) {
-        swal.fire({
-            title: 'Yakin untuk menghapus data ini?',
-            text: "Data ini akan terhapus permanen",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'Batal',
-            confirmButtonText: 'Ya Hapus'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil Dihapus',
-                    showConfirmButton: false,
-                    timer: 1500,
-
-                }).then(function() {
-                    window.location.href = "<?php echo base_url('Project/hapus_siswa/')?>" + id;
-                });
-            }
-        });
-    }
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
     </script>
 </body>
 

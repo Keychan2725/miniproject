@@ -21,4 +21,9 @@ class Component extends CI_Controller
 
         $this->load->view('component/sidebar');
     }
+    // public function user()
+	// {
+	// 	$data['user']= $this->db->get_where('admin',['email'=> $this->session->userdata('email')])->row_array();
+	// 	$this->load->view('project/user',$data);
+	// }
 }

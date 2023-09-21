@@ -17,6 +17,14 @@ class Project extends CI_Controller
 
 
 
+	public function tambah_kelas()
+	{
+
+		$data['title'] = 'Tambah Kelas';
+		$data['kelas'] = $this->m_model->get_data('kelas')->result();
+		$data['sekolah'] = $this->m_model->get_data('sekolah')->result();
+		$this->load->view('project/tambah_kelas', $data);
+	}
 	public function tambah_guru()
 	{
 
@@ -46,6 +54,7 @@ class Project extends CI_Controller
 	{
 		$data['title'] = 'Data Kelas';
 		$data['kelas'] = $this->m_model->get_data('kelas')->result();
+		$data['sekolah'] = $this->m_model->get_data('sekolah')->result();
 		$this->load->view('project/kelas', $data);
 	}
 	public function dashboard()
@@ -69,16 +78,19 @@ class Project extends CI_Controller
 	public function guru()
 	{
 		$data['title'] = 'Data Guru';
+		$data['user']= $this->db->get_where('admin',['email'=> $this->session->userdata('email')])->row_array();
 
 		$data['guru'] = $this->m_model->get_data('guru')->result();
 		$this->load->view('project/guru', $data);
 	}
+
 	public function login()
 	{
 		$data['title'] = 'Halaman Login';
 
 		$this->load->view('project/login');
 	}
+	
 	public function registrasi()
 	{
 
@@ -146,22 +158,39 @@ class Project extends CI_Controller
 	public function hapus_siswa($id)
 	{
 		$this->m_model->delete('siswa', 'id_siswa', $id);
-		$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		Data Berhasil Dihapus
-		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	
-	  </div>');
+		
 		redirect(base_url('project/siswa'));
+	}
+	public function hapus_kelas($id)
+	{
+		$this->m_model->delete('kelas', 'id', $id);
+	
+		redirect(base_url('project/kelas'));
 	}
 	public function hapus_guru($id)
 	{
 		$this->m_model->delete('guru', 'id_guru', $id);
-		$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		Data Berhasil Dihapus
+		
+		redirect(base_url('project/guru'));
+	}
+	public function aksi_tambah_kelas()
+	{
+		$data = [
+			'jurusan' => $this->input->post('jurusan'),
+			'tingkat' => $this->input->post('tingkat'),
+
+			'id_sekolah' => $this->input->post('id_sekolah'),
+
+		];
+
+
+		$this->m_model->tambah_data('kelas', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+		Data Berhasil Ditambahkan
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	
 	  </div>');
-		redirect(base_url('project/guru'));
+		redirect(base_url('project/kelas'));
 	}
 	public function aksi_tambah_guru()
 	{
@@ -181,6 +210,42 @@ class Project extends CI_Controller
 	
 	  </div>');
 		redirect(base_url('project/guru'));
+	}
+	public function update_kelas($id)
+	{
+		$data['title'] = 'Update Kelas';
+
+		$data['kelas'] = $this->m_model->get_by_id('kelas', 'id', $id)->result();
+		$data['sekolah'] = $this->m_model->get_by_id('sekolah', 'nama_sekolah', $id)->result();
+
+		$this->load->view('project/update_kelas', $data);
+	}
+	public function aksi_update_kelas()
+	{
+		$data = array(
+			'jurusan' => $this->input->post('jurusan'),
+			'tingkat' => $this->input->post('tingkat'),
+			'id_sekolah' => $this->input->post('id_sekolah'),
+		);
+		$eksekusi = $this->m_model->ubah_data(
+			'kelas',
+			$data,
+			array('id' => $this->input->post('id'))
+
+		);
+		if ($eksekusi) {
+			$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+			Data Berhasil Diubah
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		
+		  </div>');
+			redirect(base_url('project/kelas'));
+		} else {
+
+			redirect(base_url('project/update_kelas/' . $this->input->post('id')));
+		}
+
+		$this->load->view('project/kelas');
 	}
 	public function update_guru($id)
 	{
@@ -240,9 +305,11 @@ class Project extends CI_Controller
 			array('id_siswa' => $this->input->post('id_siswa'))
 		);
 		if ($eksekusi) {
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-		Data Berhasil Diubah
-	  </div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+			Data Berhasil Ditambahkan
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		
+		  </div>');
 			redirect(base_url('project/siswa'));
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
@@ -263,10 +330,18 @@ class Project extends CI_Controller
 
 		];
 		$this->m_model->tambah_data('siswa', $data);
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
 		Data Berhasil Ditambahkan
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	
 	  </div>');
-
 		redirect(base_url('project/siswa'));
 	}
+
+	public function user()
+	{
+		$data['user']= $this->db->get_where('admin',['email'=> $this->session->userdata('email')])->row_array();
+		$this->load->view('project/user',$data);
+	}
+
 }

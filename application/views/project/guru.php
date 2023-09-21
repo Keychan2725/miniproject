@@ -10,7 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://fontawesome-free/css/all.min.css" type="text/css">
 </head>
 <style>
 body {
@@ -157,13 +158,16 @@ body {
                     <a href="<?php echo base_url('project/guru') ?>" class="fs-5">Data Guru</a>
                 </li>
                 <li>
-                    <a href="#" class="fs-5">Data Kelas</a>
+                    <a href="<?php echo base_url(('project/kelas')) ?>" class="fs-5">Data Kelas</a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">About</a>
                 </li>
                 <li>
-                    <a href="#" class="fs-5">Account</a>
+                    <a href="<?php echo base_url('project/user') ?>" class="fs-5">
+                        <i class="fa-solid  fa-fw fa-user">Acount</i>
+
+                    </a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">Settings</a>
@@ -249,10 +253,29 @@ body {
 
                             <script>
                             function hapus(id) {
-                                var yes = confirm("Yakin Ingin Menghapus Data Anda")
-                                if (yes === true) {
-                                    window.location.href = "<?php echo base_url('project/hapus_guru/') ?>" + id;
-                                }
+                                swal.fire({
+                                    title: 'Yakin untuk menghapus data ini?',
+                                    text: "Data ini akan terhapus permanen",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    cancelButtonText: 'Batal',
+                                    confirmButtonText: 'Ya Hapus'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Berhasil Dihapus',
+                                            showConfirmButton: false,
+                                            timer: 1500,
+
+                                        }).then(function() {
+                                            window.location.href =
+                                                "<?php echo base_url('Project/hapus_guru/')?>" + id;
+                                        });
+                                    }
+                                });
                             }
                             </script>
 
@@ -269,7 +292,6 @@ body {
         <!-- /#page-content-wrapper -->
 
     </div>
-    <script src="js/sweetalert2.all.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>

@@ -44,41 +44,33 @@
     <body class="">
         <?php $this->load->view('component/sidebar') ?>
         <div class="card w-50 m-auto p-3">
-            <h3 class="text-center">Update Siswa </h3>
+            <h3 class="text-center">Update Kelas </h3>
             <?php echo $this->session->flashdata('message'); ?>
 
-            <?php foreach ($siswa as $data_siswa) : ?>
-            <form method="post" action="<?php echo base_url('project/aksi_update_siswa') ?>"
+            <?php foreach ($kelas as $data_kelas) : ?>
+            <form method="post" action="<?php echo base_url('project/aksi_update_kelas') ?>"
                 enctype="multipart/form_data">
-                <input name="id_siswa" type="hidden" value="<?php echo $data_siswa->id_siswa ?>">
+                <input name="id" type="hidden" value="<?php echo $data_kelas->id ?>">
                 <div class="mb-3">
-                    <label for="nama" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="nama_siswa" name="nama_siswa"
-                        value="<?php echo $data_siswa->nama_siswa ?>">
+                    <label for="jurusan" class="form-label">Jurusan</label>
+                    <input type="text" class="form-control" id="jurusan" name="jurusan"
+                        value="<?php echo $data_kelas->jurusan ?>">
                 </div>
                 <div class="mb-3">
                     <div class="mb-3">
-                        <label for="nama" class="form-label">NISN</label>
-                        <input type="text" class="form-control" id="nisn" name="nisn"
-                            value="<?php echo $data_siswa->nisn ?> ">
+                        <label for="nama" class="form-label">Tingkat</label>
+                        <input type="text" class="form-control" id="tingkat" name="tingkat"
+                            value="<?php echo $data_kelas->tingkat ?> ">
                     </div>
+
                     <div class="mb-3 col-6">
-                        <label for="gender" class="form-label">Gender</label>
-                        <select name="gender" class="form-select">
-                            <option selected value="<?php echo $data_siswa->gender ?>"><?php echo $data_siswa->gender ?>
-                            </option>
-                            <option value="Laki Laki">Laki Laki</option>
-                            <option value="Wanita">Wanita</option>
-                        </select>
-                    </div>
-                    <div class="mb-3 col-6">
-                        <label for="kelas" class="form-label">Kelas</label>
-                        <select name="id_kelas" class="form-select">
-                            <option selected value="<?php echo $data_siswa->id_kelas ?>">
-                                <?php echo tampil_full_kelas_byid($data_siswa->id_kelas) ?></option>
-                            <?php foreach ($kelas as $row) : ?>
-                            <option value="<?php echo $row->id ?>">
-                                <?php echo $row->tingkat . ' ' . $row->jurusan ?>
+                        <label for="sekolah" class="form-label">Sekolah</label>
+                        <select name="id_sekolah" class="form-select">
+                            <option selected value="<?php echo $data_kelas->id_sekolah ?>">
+                                <?php echo tampil_full_sekolah($data_kelas->id_sekolah) ?></option>
+                            <?php foreach ($sekolah as $row) : ?>
+                            <option value="<?php echo $row->id_sekolah ?>">
+                                <?php echo $row->nama_sekolah  ?>
                             </option>
                             <?php endforeach ?>
                         </select>
@@ -104,7 +96,7 @@
 
     </body>
     <script>
- 
+
     </script>
 
     </html>

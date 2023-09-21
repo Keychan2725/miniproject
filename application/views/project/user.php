@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web</title>
+    <title><?php echo $title; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://fontawesome-free/css/all.min.css" type="text/css">
 </head>
 <style>
 body {
@@ -157,24 +158,24 @@ body {
                     <a href="<?php echo base_url('project/guru') ?>" class="fs-5">Data Guru</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('project/kelas') ?>" class="fs-5">Data Kelas</a>
+                    <a href="<?php echo base_url(('project/kelas')) ?>" class="fs-5">Data Kelas</a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">About</a>
                 </li>
                 <li>
-                    <!-- <a href="#" class="fs-5 ">
-                        <span class="mr-2 d-none d-lg-inline text-white"> 
-                            <?php echo $user; ?>
-                        </span>   
-                        <img class="img-profile rounded-circle" src=""></img>                     
-                    </a> -->
+                    <a href="<?php echo base_url('project/user') ?>" class="fs-5">
+                        <i class="fa-solid  fa-fw fa-user"></i>
+
+
+                    </a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">Settings</a>
                 </li>
+
                 <li>
-                    <a href="<?php echo base_url('project/home') ?>" class="fs-5 ">Log Out</a>
+                    <a href="<?php echo base_url('project/home') ?>" class="fs-5">Log Out</a>
                 </li>
             </ul>
 
@@ -182,16 +183,40 @@ body {
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
+
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <?php echo $this->session->set_flashdata('message'); ?>
 
+
+                <div class="card mb-3" style="max-width: 600px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="<?php echo base_url('assets/img').$user['image']; ?>"
+                                class="img-fluid rounded-start">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
+    <br>
+
+    </div>
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+    </div>
 
     <!-- Menu Toggle Script -->
     <script>

@@ -19,3 +19,13 @@ function tampil_full_mapel($id)
         return $stmt;
     }
 }
+function tampil_full_sekolah($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id_sekolah', $id)->get('sekolah');
+    foreach ($result->result() as $c) {
+        $stmt = $c->nama_sekolah;
+        return $stmt;
+    }
+}
