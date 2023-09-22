@@ -160,10 +160,10 @@ body {
                     <a href="<?php echo base_url('project/kelas') ?>" class="fs-5">Data Kelas</a>
                 </li>
                 <li>
-                    <a href="#" class="fs-5">About</a>
+                    <a href="<?php echo base_url('project/mapel') ?>" class="fs-5">Data Mapel</a>
                 </li>
                 <li>
-                    <a href="#" class="fs-5">Account</a>
+                    <a href="<?php echo base_url('project/user') ?>" class="fs-5">Account</a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">Settings</a>
@@ -178,12 +178,13 @@ body {
 
         <!-- Page Content -->
 
+        <div>
+        </div>
         <div id="page-content-wrapper ">
             <div class="container-fluid ">
 
                 <div class="d-flex  p-5 ">
                     <div class="card bg-secondary text-white" style="width: 30rem;">
-
                         <div class="card-body">
                             <p class="card-text fs-4">Jumlah Siswa</p>
                             <p class=" fs-1"><?php echo $siswa ?> </p>
@@ -216,14 +217,25 @@ body {
 
                 </div>
                 <!-- /#wrapper -->
-
-                <!-- Menu Toggle Script -->
-                <script>
-                $("#menu-toggle").click(function(e) {
-                    e.preventDefault();
-                    $("#wrapper").toggleClass("toggled");
-                });
-                </script>
+                <div class="d-flex">
+                    <div class="d-flex  p-5 ">
+                        <div class="card bg-secondary text-white" style="width: 45rem;">
+                            <div class="card-body">
+                                <p class="card-text fs-4">Jumlah Mapel</p>
+                                <p class=" fs-1"><?php echo $mapel ?> </p>
+                                <a href="<?php echo base_url('project/mapel') ?>"
+                                    class=" fs-5 btn btn-sm text-white">Data
+                                    Lengkap</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Menu Toggle Script -->
+                    <script>
+                    $("#menu-toggle").click(function(e) {
+                        e.preventDefault();
+                        $("#wrapper").toggleClass("toggled");
+                    });
+                    </script>
 </body>
 
 </html>

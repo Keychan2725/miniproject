@@ -160,15 +160,10 @@ body {
                     <a href="<?php echo base_url('project/kelas') ?>" class="fs-5">Data Kelas</a>
                 </li>
                 <li>
-                    <a href="#" class="fs-5">About</a>
+                    <a href="<?php echo base_url('project/mapel') ?>" class="fs-5">Data Mapel</a>
                 </li>
                 <li>
-                    <!-- <a href="#" class="fs-5 ">
-                        <span class="mr-2 d-none d-lg-inline text-white"> 
-                            <?php echo $user; ?>
-                        </span>   
-                        <img class="img-profile rounded-circle" src=""></img>                     
-                    </a> -->
+                    <a href="<?php echo base_url('project/user') ?>" class="fs-5">Account</a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">Settings</a>

@@ -16,42 +16,26 @@
 
 </head>
 
-<body class=" ">
+<body class="">
 
 
     <?php $this->load->view('component/sidebar') ?>
 
 
     <div class="card w-50 m-auto p-3">
-        <h3 class="text-center ">Tambah Guru </h3>
+        <h3 class="text-center ">Tambah Mapel </h3>
         <br>
-        <form action="<?php echo base_url('project/aksi_tambah_guru')  ?>" method="post" class="row">
+        <form action="<?php echo base_url('project/aksi_tambah_mapel')  ?>" method="post" class="row">
             <div class="mb-3 col-6">
-                <label for="nama" class="form-label">Nama Guru</label>
-                <input type="text" placeholder="Nama Guru" class="form-control" id="nama_guru" name="nama_guru">
-            </div>
-            <div class="mb-3 col-6">
-                <label for="nisn" class="form-label">NIK</label>
-                <input type="text" placeholder="NIK" class="form-control" id="nik" name="nik">
-            </div>
-            <div class="mb-3 col-6">
-                <label for="gender" class="form-label">Gender</label>
-                <select name="gender" class="form-select">
-                    <option selected>Pilih Gender</option>
-                    <option value="Laki Laki">Laki Laki</option>
-                    <option value="Wanita">Wanita</option>
-                </select>
-            </div>
-            <div class="mb-3 col-6">
-                <label for="id_mapel" class="form-label">id_mapel</label>
-                <input type="text" placeholder="Id mapel" class="form-control" id="id_mapel" name="id_mapel">
+                <label for="jurusan" class="form-label">Nama Mapel</label>
+                <input type="text" placeholder="Nama Mapel" class="form-control" id="nama_mapel" name="nama_mapel">
             </div>
 
             <br>
             <br>
             <div class="flex justify-content-between">
                 <div>
-                    <a href="<?php echo base_url('project/guru'); ?>"
+                    <a href="<?php echo base_url('project/mapel'); ?>"
                         class=" flex items-center p-2 m-10 w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2  rounded w-7/6">
                         <span>Kembali</span>
                     </a>

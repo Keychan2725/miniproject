@@ -161,13 +161,11 @@ body {
                     <a href="<?php echo base_url(('project/kelas')) ?>" class="fs-5">Data Kelas</a>
                 </li>
                 <li>
-                    <a href="#" class="fs-5">About</a>
+                    <a href="<?php echo base_url('project/mapel') ?>" class="fs-5">Data Mapel</a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('project/user') ?>" class="fs-5">
-                        <i class="fa-solid  fa-fw fa-user">Acount</i>
-
-                    </a>
+                        Account</a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">Settings</a>

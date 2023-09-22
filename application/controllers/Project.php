@@ -11,12 +11,19 @@ class Project extends CI_Controller
 		$this->load->helper('my_helper');
 		$this->load->library('form_validation');
 		// if ($this->session->userdata('logged_in') != true) {
-		// 	redirect(base_url() . 'project/home');
+		// 	redirect(base_url().'project/login');
 		// }
 	}
 
 
 
+	public function tambah_mapel()
+	{
+
+		$data['title'] = 'Tambah Mapel';
+		$data['mapel'] = $this->m_model->get_data('mapel')->result();
+		$this->load->view('project/tambah_mapel', $data);
+	}
 	public function tambah_kelas()
 	{
 
@@ -50,6 +57,12 @@ class Project extends CI_Controller
 
 		$this->load->view('project/home');
 	}
+	public function mapel()
+	{
+		$data['title'] = 'Data Mapel';
+		$data['mapel'] = $this->m_model->get_data('mapel')->result();
+		$this->load->view('project/mapel', $data);
+	}
 	public function kelas()
 	{
 		$data['title'] = 'Data Kelas';
@@ -64,6 +77,7 @@ class Project extends CI_Controller
 		$data['siswa'] = $this->m_model->get_data('siswa')->num_rows();
 		$data['kelas'] = $this->m_model->get_data('kelas')->num_rows();
 		$data['guru'] = $this->m_model->get_data('guru')->num_rows();
+		$data['mapel'] = $this->m_model->get_data('mapel')->num_rows();
 
 		$this->load->view('project/dashboard', $data);
 	}
@@ -155,6 +169,12 @@ class Project extends CI_Controller
 		$this->session->sess_destroy();
 		redirect(base_url('project/home'));
 	}
+	public function hapus_mapel($id)
+	{
+		$this->m_model->delete('mapel', 'id', $id);
+		
+		redirect(base_url('project/mapel'));
+	}
 	public function hapus_siswa($id)
 	{
 		$this->m_model->delete('siswa', 'id_siswa', $id);
@@ -172,6 +192,22 @@ class Project extends CI_Controller
 		$this->m_model->delete('guru', 'id_guru', $id);
 		
 		redirect(base_url('project/guru'));
+	}
+	public function aksi_tambah_mapel()
+	{
+		$data = [
+			'nama_mapel' => $this->input->post('nama_mapel'),
+		
+		];
+
+
+		$this->m_model->tambah_data('mapel', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+		Data Berhasil Ditambahkan
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	
+	  </div>');
+		redirect(base_url('project/mapel'));
 	}
 	public function aksi_tambah_kelas()
 	{
@@ -210,6 +246,39 @@ class Project extends CI_Controller
 	
 	  </div>');
 		redirect(base_url('project/guru'));
+	}
+	public function update_mapel($id)
+	{
+		$data['title'] = 'Update Mapel';
+
+		$data['mapel'] = $this->m_model->get_by_id('mapel', 'id', $id)->result();
+
+		$this->load->view('project/update_mapel', $data);
+	}
+	public function aksi_update_mapel()
+	{
+		$data = array(
+			'nama_mapel' => $this->input->post('nama_mapel'),
+		);
+		$eksekusi = $this->m_model->ubah_data(
+			'mapel',
+			$data,
+			array('id' => $this->input->post('id'))
+
+		);
+		if ($eksekusi) {
+			$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+			Data Berhasil Diubah
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		
+		  </div>');
+			redirect(base_url('project/mapel'));
+		} else {
+
+			redirect(base_url('project/update_mapel/' . $this->input->post('id')));
+		}
+
+		$this->load->view('project/mapel');
 	}
 	public function update_kelas($id)
 	{
@@ -340,8 +409,10 @@ class Project extends CI_Controller
 
 	public function user()
 	{
-		$data['user']= $this->db->get_where('admin',['email'=> $this->session->userdata('email')])->row_array();
+		$data['user']= $this->db->get_where('admin')->result();
+		// $this->session->userdata->get_by_id();
 		$this->load->view('project/user',$data);
+		
 	}
 
 }

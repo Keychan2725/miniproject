@@ -11,7 +11,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://fontawesome-free/css/all.min.css" type="text/css">
+    <script defer src="/assets-img-fontawesome/js/fontawesome.js"></script>
 </head>
 <style>
 body {
@@ -161,14 +161,10 @@ body {
                     <a href="<?php echo base_url(('project/kelas')) ?>" class="fs-5">Data Kelas</a>
                 </li>
                 <li>
-                    <a href="#" class="fs-5">About</a>
+                    <a href="<?php echo base_url('project/mapel') ?>" class="fs-5">Data Mapel</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('project/user') ?>" class="fs-5">
-                        <i class="fa-solid  fa-fw fa-user"></i>
-
-
-                    </a>
+                    <a href="<?php echo base_url('project/user') ?>" class="fs-5">Account</a>
                 </li>
                 <li>
                     <a href="#" class="fs-5">Settings</a>
@@ -186,26 +182,46 @@ body {
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
+                <i class="fa-solid fa-user"></i>
 
-
+                <?php
+$no=0;
+foreach ($user as $row) : $no++?>
                 <div class="card mb-3" style="max-width: 600px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="<?php echo base_url('assets/img').$user['image']; ?>"
-                                class="img-fluid rounded-start">
+                            <img src="<?php echo  $row->image?>" class="container rounded-circle mx-auto" widht="150"
+                                height="160">
+                            <br>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small>
-                                </p>
+                                <ul>
+                                    <li>
+                                        <p>Username</p>
+                                        <h4 class="card-title"><?php ?><?php echo  $row->username ?></h4>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <p>Email</p>
+                                        <h5><?php echo $row->email ?></h5>
+                                    </li>
+                                    <hr>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
+                                            ago</small>
+                                    </p>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex container">
+                        <button type="submit" class="btn btn-sm btn-primary" onclick="edit(id)">Edit Foto
+                            Profile</button>
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="profil(id)">Edit Profile</button>
+                    </div>
                 </div>
             </div>
+            <?php endforeach ?>
         </div>
 
     </div>
@@ -217,7 +233,13 @@ body {
     <!-- /#page-content-wrapper -->
 
     </div>
+    <!-- <script>
+if (edit(id) === true) {
+    confirm('<input type="image" src="" alt="">')
+}else{
 
+} -->
+    </script>
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {

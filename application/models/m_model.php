@@ -14,12 +14,13 @@ class M_model extends CI_Model
     {
         $data = $this->db->delete($table, array($field => $id));
         return $data;
-    }
-    function tambah_data($table, $data)
+    }function tambah_data($table, $data)
     {
         $this->db->insert($table, $data);
         return $this->db->insert_id();
     }
+    
+    
     public function get_by_id($tabel, $id_column, $id)
     {
         $data = $this->db->where($id_column, $id)->get($tabel);
