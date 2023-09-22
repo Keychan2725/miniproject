@@ -215,8 +215,9 @@ foreach ($user as $row) : $no++?>
                         </div>
                     </div>
                     <div class="d-flex container">
-                        <button type="submit" class="btn btn-sm btn-primary" onclick="edit(id)">Edit Foto
-                            Profile</button>
+                        <a type="submit" class="btn btn-sm btn-primary"
+                            href="<?php echo base_url('project/update_profil') ?>">Edit Foto
+                            Profile</a>
                         <button type="submit" class="btn btn-sm btn-danger" onclick="profil(id)">Edit Profile</button>
                     </div>
                 </div>

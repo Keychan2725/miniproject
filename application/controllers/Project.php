@@ -247,6 +247,40 @@ class Project extends CI_Controller
 	  </div>');
 		redirect(base_url('project/guru'));
 	}
+	// public function update_profil($id)
+	// {
+	// 	$data['title'] = 'Update Profil';
+
+	// 	$data['admin'] = $this->m_model->get_by_id('admin', 'id', $id)->result();
+	
+
+	// 	$this->load->view('project/update_profil', $data);
+	// }
+	// public function aksi_update_profil()
+	// {
+	// 	$data = array(
+	// 		'image' => $this->input->post('image'),
+	// 	);
+	// 	$eksekusi = $this->m_model->ubah_data(
+	// 		'admin',
+	// 		$data,
+	// 		array('id' => $this->input->post('id'))
+
+	// 	);
+	// 	if ($eksekusi) {
+	// 		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+	// 		Data Berhasil Diubah
+	// 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		
+	// 	  </div>');
+	// 		redirect(base_url('project/user'));
+	// 	} else {
+
+	// 		redirect(base_url('project/update_profil/' . $this->input->post('id')));
+	// 	}
+
+	// 	$this->load->view('project/user');
+	// }
 	public function update_mapel($id)
 	{
 		$data['title'] = 'Update Mapel';
