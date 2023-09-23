@@ -165,9 +165,7 @@ body {
                 <li>
                     <a href="<?php echo base_url('project/user') ?>" class="fs-5">Account</a>
                 </li>
-                <li>
-                    <a href="#" class="fs-5">Settings</a>
-                </li>
+
                 <li>
                     <a href="<?php echo base_url('project/home') ?>" class="fs-5 ">Log Out</a>
                 </li>

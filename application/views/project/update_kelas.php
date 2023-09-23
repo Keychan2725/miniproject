@@ -78,7 +78,7 @@
                     </div>
                     <div class="flex justify-content-between">
                         <div>
-                            <a href="<?php echo base_url('project/siswa'); ?>"
+                            <a href="<?php echo base_url('project/kelas'); ?>"
                                 class=" flex items-center p-2 m-10 w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2  rounded w-7/6">
                                 <span>Kembali</span>
                             </a>

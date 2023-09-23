@@ -166,9 +166,7 @@ body {
                 <li>
                     <a href="<?php echo base_url('project/user') ?>" class="fs-5">Account</a>
                 </li>
-                <li>
-                    <a href="#" class="fs-5">Settings</a>
-                </li>
+
 
                 <li>
                     <a href="<?php echo base_url('project/home') ?>" class="fs-5">Log Out</a>
@@ -184,70 +182,96 @@ body {
             <div class="container-fluid">
                 <i class="fa-solid fa-user"></i>
 
-                <?php
-$no=0;
-foreach ($user as $row) : $no++?>
-                <div class="card mb-3" style="max-width: 600px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="<?php echo  $row->image?>" class="container rounded-circle mx-auto" widht="150"
-                                height="160">
-                            <br>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <ul>
-                                    <li>
-                                        <p>Username</p>
-                                        <h4 class="card-title"><?php ?><?php echo  $row->username ?></h4>
-                                    </li>
-                                    <hr>
-                                    <li>
-                                        <p>Email</p>
-                                        <h5><?php echo $row->email ?></h5>
-                                    </li>
-                                    <hr>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                            ago</small>
-                                    </p>
-                                </ul>
+                <main class="d-flex flex-nowrap">
+                    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+                        <div class="card p-4">
+                            <div class=" image d-flex flex-column justify-content-center align-items-center">
+                                <?php foreach ($admin as $row): ?>
+                                <button class="border border-0 btn btn-link" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <?php if (!empty($row-> image)): ?>
+                                    <img class="rounded-circle" height="150" width="150"
+                                        src="<?php echo base64_decode($row->image);?>">
+                                    <?php else: ?>
+                                    <img class="rounded-circle" height="150" width="150"
+                                        src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
+                                    <?php endif;?>
+                                </button>
+
+                                <span class="name mt-3 fs-3"><?php echo $row->username ?></span>
+                                <span class="idd fs-5"><?php echo $row->email ?></span>
+
+
+                                <div class=" d-flex mt-2 gap-2"> <a
+                                        href="<?php echo base_url('profile/ubah_password/').$this->session->userdata('id')?>"
+                                        class="btn btn-dark btn">Ubah Password</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex container">
-                        <a type="submit" class="btn btn-sm btn-primary"
-                            href="<?php echo base_url('project/update_profil') ?>">Edit Foto
-                            Profile</a>
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="profil(id)">Edit Profile</button>
+                    <?php endforeach?>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="container w-75 m p-3">
+                            <form method="post" action="<?php echo base_url('project/upload_image'); ?>"
+                                enctype="multipart/form-data" class="row">
+                                <div class="mb-3 col-12">
+                                    <label for="nama" class="form-label">Foto:</label>
+                                    <input type="hidden" class="form-control" id="id" name="id"
+                                        value="<?php echo $this->session->userdata('id'); ?>">
+                                    <input type="hidden" name="base64_image" id="base64_image">
+                                    <input class="form-control" type="file" name="userfile" id="userfile"
+                                        accept="image/*">
+                                </div>
+                                <div class="col-12 text-end">
+                                    <input type="submit" class="btn btn-primary px-3" name="submit"
+                                        value="Ubah Foto"></input>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-danger" href="<?php echo base_url('Project/hapus_image'); ?>">Hapus
+                                Foto</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <?php endforeach ?>
-        </div>
+            <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                crossorigin="anonymous"></script>
+            <script>
+            document.getElementById('userfile').addEventListener('change', function() {
+                const fileInput = document.getElementById('userfile');
+                const base64Input = document.getElementById('base64_image');
 
-    </div>
-    <br>
+                const file = fileInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
 
-    </div>
+                    reader.onload = function(e) {
+                        const base64 = e.target.result;
+                        base64Input.value = base64;
+                    };
 
-    </div>
-    <!-- /#page-content-wrapper -->
+                    reader.readAsDataURL(file);
+                }
+            });
+            </script>
 
-    </div>
-    <!-- <script>
-if (edit(id) === true) {
-    confirm('<input type="image" src="" alt="">')
-}else{
-
-} -->
-    </script>
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+            <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+            </script>
 </body>
 
 </html>

@@ -43,8 +43,8 @@
                 </select>
             </div>
             <div class="mb-3 col-6">
-                <label for="id_mapel" class="form-label">id_mapel</label>
-                <input type="text" placeholder="Id mapel" class="form-control" id="id_mapel" name="id_mapel">
+                <label for="id_mapel" class="form-label">Id mapel</label>
+                <input type="text" placeholder="Nama mapel" class="form-control" id="id_mapel" name="id_mapel">
             </div>
 
             <br>

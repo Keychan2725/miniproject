@@ -12,16 +12,60 @@
 </head>
 
 <body class="bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-dark p-3 bg-secondary " id="headerNav">
+        <div class="container-fluid">
+            <!-- <a class="navbar-brand d-block d-lg-none" href="#">
+                <img src="/static_files/images/logos/logo_2_white.png" height="80" />
+            </a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" aria-current="page"
+                            href="<?php echo base_url('project/home') ?>">Home</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link mx-2" href="#">Products</a>
+                    </li> -->
+                    <!-- <li class="nav-item d-none d-lg-block">
+                        <a class="nav-link mx-2" href="#">
+                            <img src="/static_files/images/logos/logo_2_white.png" height="80" />
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active"
+                            href="<?php echo base_url('project/registrasi') ?>">Regristrasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" href="<?php echo base_url('project/login') ?>">Login</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Company
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Blog</a></li>
+                            <li><a class="dropdown-item" href="#">About Us</a></li>
+                            <li><a class="dropdown-item" href="#">Contact us</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <section class=" h-100 ">
         <div class="container h-100">
             <div class="row justify-content-sm-center h-100">
                 <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
-                    <div class="text-center my-5">
-                        <img src="https://o.remove.bg/downloads/ca693045-48f8-4764-9294-314968e5f315/png-transparent-computer-icons-button-login-image-file-formats-logo-monochrome-removebg-preview.png"
-                            alt="" width="100">
-                    </div>
+
                     <div class="card  shadow-lg ">
-                        <div class="card-body   p-5 ">
+                        <div class="card-body  p-5 ">
                             <?php echo $this->session->flashdata('message'); ?>
                             <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
                             <form method="POST" class="needs-validation" novalidate="" autocomplete="off"
@@ -50,8 +94,6 @@
                                 <br>
                                 <br>
                                 <div class="r flex justify-content-between">
-                                    <a href="<?php echo base_url('project/home') ?>"
-                                        class="btn btn-lg btn-danger">Kembali</a>
 
                                     <button type="submit" class="btn btn-lg btn-primary ms-auto">
                                         Login

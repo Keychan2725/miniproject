@@ -12,14 +12,12 @@
 </head>
 
 <body class="bg-secondary">
+    <div><?php $this->load->view('component/navbar') ?></div>
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-sm-center h-100">
                 <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
-                    <div class="text-center my-5">
-                        <img src="https://o.remove.bg/downloads/ca693045-48f8-4764-9294-314968e5f315/png-transparent-computer-icons-button-login-image-file-formats-logo-monochrome-removebg-preview.png"
-                            alt="" width="100">
-                    </div>
+
                     <div class="card shadow-lg">
                         <div class="card-body p-5">
                             <?php echo $this->session->flashdata('message'); ?>
@@ -51,13 +49,11 @@
                                     </div>
                                 </div>
 
-                                <p class="form-text text-muted mb-3">
-                                    By registering you agree with our terms and condition.
+                                <p class="form-text  text-muted mb-3">
+                                    Password lebih dari 8 angka
                                 </p>
 
                                 <div class="r flex justify-content-between">
-                                    <a href="<?php echo base_url('project/home') ?>"
-                                        class="btn btn-lg btn-danger">Kembali</a>
 
                                     <button type="submit" class="btn btn-lg btn-primary ms-auto">
                                         Registrasi

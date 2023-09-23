@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="mb-3 col-6">
-                        <label for="mapel" class="form-label">Mapel</label>
+                        <label for="mapel" class="form-label"> Nama Mapel</label>
                         <select name="id_mapel" class="form-select">
                             <option selected value="<?php echo $data_guru->id_mapel ?>">
                                 <?php echo tampil_full_mapel($data_guru->id_mapel) ?></option>
