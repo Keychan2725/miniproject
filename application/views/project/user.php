@@ -169,7 +169,7 @@ body {
 
 
                 <li>
-                    <a href="<?php echo base_url('project/home') ?>" class="fs-5">Log Out</a>
+                    <a href="<?php echo base_url('auth/home') ?>" class="fs-5">Log Out</a>
                 </li>
             </ul>
 
@@ -187,6 +187,7 @@ body {
                         <div class="card p-4">
                             <div class=" image d-flex flex-column justify-content-center align-items-center">
                                 <?php foreach ($admin as $row): ?>
+
                                 <button class="border border-0 btn btn-link" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     <?php if (!empty($row-> image)): ?>
@@ -197,6 +198,7 @@ body {
                                         src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
                                     <?php endif;?>
                                 </button>
+                                <p>Klik Untuk Mengubah Profil</p>
 
                                 <span class="name mt-3 fs-3"><?php echo $row->username ?></span>
                                 <span class="idd fs-5"><?php echo $row->email ?></span>
@@ -204,74 +206,100 @@ body {
 
                                 <div class=" d-flex mt-2 gap-2"> <a
                                         href="<?php echo base_url('profile/ubah_password/').$this->session->userdata('id')?>"
-                                        class="btn btn-dark btn">Ubah Password</a>
+                                        class="btn btn-primary btn">Ubah Password</a>
+
+
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+
+                                    <div class="stats">
+                                        <h6 class="mb-0"></h6>
+                                        <span></span>
+
+                                    </div>
+
+
+                                    <div class="stats">
+                                        <h6 class="mb-0"></h6>
+                                        <span></span>
+
+                                    </div>
+
+
+                                    <div class="stats">
+                                        <h6 class="mb-0"></h6>
+                                        <span></span>
+
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
+                        <?php endforeach?>
                     </div>
-                    <?php endforeach?>
-            </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="container w-75 m p-3">
-                            <form method="post" action="<?php echo base_url('project/upload_image'); ?>"
-                                enctype="multipart/form-data" class="row">
-                                <div class="mb-3 col-12">
-                                    <label for="nama" class="form-label">Foto:</label>
-                                    <input type="hidden" class="form-control" id="id" name="id"
-                                        value="<?php echo $this->session->userdata('id'); ?>">
-                                    <input type="hidden" name="base64_image" id="base64_image">
-                                    <input class="form-control" type="file" name="userfile" id="userfile"
-                                        accept="image/*">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <div class="col-12 text-end">
-                                    <input type="submit" class="btn btn-primary px-3" name="submit"
-                                        value="Ubah Foto"></input>
+                                <div class="container w-75 m p-3">
+                                    <form method="post" action="<?php echo base_url('project/upload_image'); ?>"
+                                        enctype="multipart/form-data" class="row">
+                                        <div class="mb-3 col-12">
+                                            <label for="nama" class="form-label">Foto:</label>
+                                            <input type="hidden" class="form-control" id="id" name="id"
+                                                value="<?php echo $this->session->userdata('id'); ?>">
+                                            <input type="hidden" name="base64_image" id="base64_image">
+                                            <input class="form-control" type="file" name="userfile" id="userfile"
+                                                accept="image/*">
+                                        </div>
+                                        <div class="col-12 text-end">
+                                            <input type="submit" class="btn btn-primary px-3" name="submit"
+                                                value="Ubah Foto"></input>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                                <div class="modal-footer">
+                                    <a class="btn btn-danger"
+                                        href="<?php echo base_url('Project/hapus_image'); ?>">Hapus
+                                        Foto</a>
+                                </div>
+
+                            </div>
+
                         </div>
-                        <div class="modal-footer">
-                            <a class="btn btn-danger" href="<?php echo base_url('Project/hapus_image'); ?>">Hapus
-                                Foto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-                crossorigin="anonymous"></script>
-            <script>
-            document.getElementById('userfile').addEventListener('change', function() {
-                const fileInput = document.getElementById('userfile');
-                const base64Input = document.getElementById('base64_image');
+                        <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                            crossorigin="anonymous"></script>
+                        <script>
+                        document.getElementById('userfile').addEventListener('change', function() {
+                            const fileInput = document.getElementById('userfile');
+                            const base64Input = document.getElementById('base64_image');
 
-                const file = fileInput.files[0];
-                if (file) {
-                    const reader = new FileReader();
+                            const file = fileInput.files[0];
+                            if (file) {
+                                const reader = new FileReader();
 
-                    reader.onload = function(e) {
-                        const base64 = e.target.result;
-                        base64Input.value = base64;
-                    };
+                                reader.onload = function(e) {
+                                    const base64 = e.target.result;
+                                    base64Input.value = base64;
+                                };
 
-                    reader.readAsDataURL(file);
-                }
-            });
-            </script>
+                                reader.readAsDataURL(file);
+                            }
+                        });
+                        </script>
 
-            <script>
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-            </script>
+                        <script>
+                        $("#menu-toggle").click(function(e) {
+                            e.preventDefault();
+                            $("#wrapper").toggleClass("toggled");
+                        });
+                        </script>
 </body>
 
 </html>

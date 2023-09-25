@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark p-3 bg-secondary " id="headerNav">
+    <nav class="navbar navbar-expand-lg navbar-dark p-3 bg-light " id="headerNav">
         <div class="container-fluid">
             <!-- <a class="navbar-brand d-block d-lg-none" href="#">
                 <img src="/static_files/images/logos/logo_2_white.png" height="80" />
@@ -28,7 +28,7 @@
                 <ul class="navbar-nav mx-auto ">
                     <li class="nav-item">
                         <a class="nav-link mx-2 active" aria-current="page"
-                            href="<?php echo base_url('project/home') ?>">Home</a>
+                            href="<?php echo base_url('auth/home') ?>">Home</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link mx-2" href="#">Products</a>
@@ -39,11 +39,10 @@
                         </a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link mx-2 active"
-                            href="<?php echo base_url('project/registrasi') ?>">Regristrasi</a>
+                        <a class="nav-link mx-2 active" href="<?php echo base_url('auth/registrasi') ?>">Regristrasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 active" href="<?php echo base_url('project/login') ?>">Login</a>
+                        <a class="nav-link mx-2 active" href="<?php echo base_url('auth/login') ?>">Login</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

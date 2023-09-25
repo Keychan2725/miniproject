@@ -169,7 +169,7 @@ body {
 
 
                 <li>
-                    <a href="<?php echo base_url('project/home') ?>" class="fs-5">Log Out</a>
+                    <a href="<?php echo base_url('auth/home') ?>" class="fs-5">Log Out</a>
                 </li>
             </ul>
 
@@ -190,12 +190,12 @@ body {
 
                             <div class=" d-flex ">
                                 <p class="class fs-4">Data Mapel</p>
-                                <form class="d-flex " action="" style="padding-left: 1100px;" role="search">
+                                <!-- <form class="d-flex " action="" style="padding-left: 1100px;" role="search">
 
                                     <input class="form-control me-1 " type="search" placeholder="Cari Kelas"
                                         aria-label="Search">
                                     <button class="btn btn-outline-secondary" type="submit">Cari</button>
-                                </form>
+                                </form> -->
 
                             </div>
 
@@ -212,7 +212,7 @@ body {
                                     </style>
                                     <path
                                         d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                                </svg></a>
+                                </svg> Tambah</a>
                             <hr>
                             <table class="table  table-striped">
                                 <thead>

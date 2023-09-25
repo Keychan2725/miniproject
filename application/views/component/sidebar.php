@@ -167,7 +167,7 @@ body {
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('project/home') ?>" class="fs-5 ">Log Out</a>
+                    <a href="<?php echo base_url('auth/home') ?>" class="fs-5 ">Log Out</a>
                 </li>
             </ul>
 

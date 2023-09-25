@@ -11,7 +11,7 @@ class Project extends CI_Controller
 		$this->load->helper('my_helper');
 		$this->load->library('form_validation');
 		if ($this->session->userdata('logged_in') != true) {
-			redirect(base_url().'project');
+			redirect(base_url().'auth/login');
 		}
 	}
 
@@ -51,12 +51,7 @@ class Project extends CI_Controller
 		$this->load->view('project/tambah_siswa', $data);
 	}
 
-	public function home()
-	{
-		$data['title'] = 'Home';
-
-		$this->load->view('project/home');
-	}
+	
 	public function mapel()
 	{
 		$data['title'] = 'Data Mapel';
@@ -78,6 +73,7 @@ class Project extends CI_Controller
 		$data['kelas'] = $this->m_model->get_data('kelas')->num_rows();
 		$data['guru'] = $this->m_model->get_data('guru')->num_rows();
 		$data['mapel'] = $this->m_model->get_data('mapel')->num_rows();
+        $data['admin'] = $this-> m_model->get_by_id('admin' , 'id' ,$this->session->userdata('id') )->result();
 
 		$this->load->view('project/dashboard', $data);
 	}
@@ -98,77 +94,7 @@ class Project extends CI_Controller
 		$this->load->view('project/guru', $data);
 	}
 
-	public function login()
-	{
-		$data['title'] = 'Halaman Login';
-
-		$this->load->view('project/login');
-	}
 	
-	public function registrasi()
-	{
-
-		$data['title'] = 'Halaman Registrasi';
-
-		$this->load->view('project/registrasi');
-	}
-	public function aksi_registrasi()
-	{
-
-		$data = [
-			'username' => $this->input->post('username'),
-			'email' => $this->input->post('email'),
-			'password' => md5($this->input->post('password')),
-
-
-		];
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
-
-		if ($this->form_validation->run() === TRUE) {
-			$this->m_model->tambah_data('admin', $data);
-			redirect(base_url('project/login'));
-		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			Password anda kurang dari 8 angka
-			
-		
-		  </div>');
-			redirect(base_url(('project/registrasi')));
-		}
-	}
-
-	public function aksi_login()
-	{
-		$email = $this->input->post('email', true);
-		$password = $this->input->post('password', true);
-		$data = ['email' => $email,];
-		$query = $this->m_model->getwhere('admin', $data);
-		$result = $query->row_array();
-
-		if (!empty($result) && md5($password) === $result['password']) {
-			$data = [
-				'logged_in' => true,
-				'email' => $result['email'],
-				'username' => $result['username'],
-				'role' => $result['role'],
-				'id' => $result['id'],
-			];
-			$this->session->set_userdata($data);
-			redirect(base_url('project/dashboard'));
-		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			Email Atau Password anda salah
-			
-		
-		  </div>');
-			redirect(base_url('project/login'));
-		}
-	}
-	function logout()
-	{
-		$this->session->sess_destroy();
-		redirect(base_url('project/home'));
-	}
 	public function hapus_mapel($id)
 	{
 		$this->m_model->delete('mapel', 'id', $id);
@@ -247,40 +173,7 @@ class Project extends CI_Controller
 	  </div>');
 		redirect(base_url('project/guru'));
 	}
-	// public function update_profil($id)
-	// {
-	// 	$data['title'] = 'Update Profil';
-
-	// 	$data['admin'] = $this->m_model->get_by_id('admin', 'id', $id)->result();
 	
-
-	// 	$this->load->view('project/update_profil', $data);
-	// }
-	// public function aksi_update_profil()
-	// {
-	// 	$data = array(
-	// 		'image' => $this->input->post('image'),
-	// 	);
-	// 	$eksekusi = $this->m_model->ubah_data(
-	// 		'admin',
-	// 		$data,
-	// 		array('id' => $this->input->post('id'))
-
-	// 	);
-	// 	if ($eksekusi) {
-	// 		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-	// 		Data Berhasil Diubah
-	// 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-		
-	// 	  </div>');
-	// 		redirect(base_url('project/user'));
-	// 	} else {
-
-	// 		redirect(base_url('project/update_profil/' . $this->input->post('id')));
-	// 	}
-
-	// 	$this->load->view('project/user');
-	// }
 	public function update_mapel($id)
 	{
 		$data['title'] = 'Update Mapel';
@@ -474,7 +367,7 @@ public function hapus_image()
         'image' => NULL
     );
 
-    $eksekusi = $this->m_model->update('admin', $data, array('id'=>$this->session->userdata('id')));
+    $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
     if($eksekusi) {
         $this->session->set_flashdata('sukses' , 'berhasil');
         redirect(base_url('project/user'));
